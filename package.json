@@ -1,0 +1,60 @@
+{
+  "name": "@aoitelegram/util",
+  "description": "Utils package for aoitelegram",
+  "main": "./dist/index.js",
+  "typing": "./dist/index.d.ts",
+  "version": "1.0.0",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT",
+  "files": [
+    "./dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "Sempai<zadmanthegreat@gmail.com>",
+  "homepage": "https://aoitelegram.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aoitelegram/util.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aoitelegram/util/issues"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "telegram",
+    "library",
+    "telegramapi",
+    "bot",
+    "aoi",
+    "aoitelegram",
+    "bds.js",
+    "@aoitelegram",
+    "aoi.js"
+  ],
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "node-fetch": "^2.7.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.26",
+    "@types/node-fetch": "^2.6.11"
+  }
+}

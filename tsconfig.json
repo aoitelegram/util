@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "nodenext",
+    "declaration": true,
+    "noEmit": false,
+    "importHelpers": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "declarationDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "@core/*": ["src/classes/core/*"],
+      "@handlers/*": ["src/classes/handlers/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@structures/*": ["src/classes/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "include": ["./src"]
+}
