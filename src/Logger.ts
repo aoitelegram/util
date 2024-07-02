@@ -10,6 +10,12 @@ class Logger {
 
   static readonly dateColors = chalk.green.bold;
 
+  /**
+   * Logs a message with a specified type and additional arguments.
+   *
+   * @param type - The log level type.
+   * @param args - The arguments to log.
+   */
   private static log(
     type: keyof (typeof Logger)["textColors"],
     ...args: unknown[]
@@ -34,6 +40,14 @@ class Logger {
     );
   }
 
+  /**
+   * Logs a custom formatted message.
+   *
+   * @param options - The options for customizing the log message.
+   * @param options.time - Whether to include the current time in the log.
+   * @param options.title - The title configuration, including color, text, and boldness.
+   * @param options.args - The array of arguments to log, each with its own color, text, and boldness configuration.
+   */
   static custom(options: {
     time?: boolean;
     title: {
@@ -72,18 +86,38 @@ class Logger {
     } else console.log(formattedTitle, formattedArgs);
   }
 
+  /**
+   * Logs a debug message.
+   *
+   * @param args - The arguments to log.
+   */
   static debug(...args: unknown[]): void {
     this.log("debug", ...args);
   }
 
+  /**
+   * Logs a error message.
+   *
+   * @param args - The arguments to log.
+   */
   static error(...args: unknown[]): void {
     this.log("error", ...args);
   }
 
+  /**
+   * Logs a warn message.
+   *
+   * @param args - The arguments to log.
+   */
   static warn(...args: unknown[]): void {
     this.log("warn", ...args);
   }
 
+  /**
+   * Logs a info message.
+   *
+   * @param args - The arguments to log.
+   */
   static info(...args: unknown[]): void {
     this.log("info", ...args);
   }

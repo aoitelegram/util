@@ -1,3 +1,11 @@
+/**
+ * Retrieves a property value from an object. If no property is specified, returns the object itself.
+ *
+ * @param object - The object from which to retrieve the property.
+ * @param property - The property to retrieve. If undefined, the entire object is returned.
+ * @param parse - Optional. If true, the result is parsed using the `inspect` function.
+ * @returns The property value if a property is specified; otherwise, the entire object.
+ */
 function getObjectKey<T extends Record<string, any>>(
   object: T,
   property?: undefined,
@@ -23,6 +31,12 @@ function getObjectKey<T extends Record<string, any>>(
   }
 }
 
+/**
+ * Converts an inspected string back to its original value.
+ *
+ * @param str - The inspected string to convert.
+ * @returns The original value.
+ */
 function unInspect(str: string): any {
   const trimmedStr = str.trim();
 
@@ -35,6 +49,12 @@ function unInspect(str: string): any {
   }
 }
 
+/**
+ * Parses a string representation of an object back to an object.
+ *
+ * @param str - The string representation of the object.
+ * @returns The parsed object.
+ */
 function parseObject(str: string): any {
   const obj: { [key: string]: any } = {};
   let key = "";
@@ -93,6 +113,12 @@ function parseObject(str: string): any {
   return obj;
 }
 
+/**
+ * Parses a string representation of an array back to an array.
+ *
+ * @param str - The string representation of the array.
+ * @returns The parsed array.
+ */
 function parseArray(str: string): any[] {
   const arr: any[] = [];
   let value = "";
@@ -137,6 +163,12 @@ function parseArray(str: string): any[] {
   return arr;
 }
 
+/**
+ * Parses a string representation of a primitive value back to its original type.
+ *
+ * @param str - The string representation of the value.
+ * @returns The parsed value.
+ */
 function parseValue(str: string): any {
   if (str === "undefined") return undefined;
   if (str === "null") return null;
@@ -152,10 +184,22 @@ function parseValue(str: string): any {
   return str;
 }
 
+/**
+ * Parses a string key and removes surrounding quotes if present.
+ *
+ * @param str - The string key to parse.
+ * @returns The parsed key.
+ */
 function parseKey(str: string): string {
   return str.trim().replace(/^["']|["']$/g, "");
 }
 
+/**
+ * Converts an object or value into its string representation.
+ *
+ * @param obj - The object or value to inspect.
+ * @returns The string representation of the object or value.
+ */
 function inspect(obj: any): string {
   if (typeof obj === "object" && obj !== null) {
     if (Array.isArray(obj)) {
@@ -171,6 +215,12 @@ function inspect(obj: any): string {
   }
 }
 
+/**
+ * Unescapes special sequences in a string to their original characters.
+ *
+ * @param code - The string containing escaped sequences.
+ * @returns The unescaped string.
+ */
 function unescapeCode(code: string): string {
   return code
     .replace(/@at/gi, "@")
@@ -188,6 +238,12 @@ function unescapeCode(code: string): string {
     .replace(/@dollar/gi, "$");
 }
 
+/**
+ * Escapes special characters in a string with specific sequences.
+ *
+ * @param code - The string containing characters to escape.
+ * @returns The escaped string.
+ */
 function escapeCode(code: string): string {
   return code
     .replace(/@/g, "@at")

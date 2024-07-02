@@ -1,6 +1,13 @@
 import { deepEqual } from "node:assert";
 import { inspect } from "./Helpers";
 
+/**
+ * Tries to check if two values are deeply equal.
+ *
+ * @param actual - The actual value to check.
+ * @param expected - The expected value to check against.
+ * @returns `true` if the values are deeply equal, otherwise `false`.
+ */
 function deepEqualTry(actual: unknown, expected: unknown) {
   try {
     deepEqual(actual, expected);
@@ -11,10 +18,24 @@ function deepEqualTry(actual: unknown, expected: unknown) {
 }
 
 class ConditionChecker {
+  /**
+   * Checks if a message contains a specified operator.
+   *
+   * @param msg - The message to check.
+   * @param operator - The operator to look for.
+   * @returns `true` if the operator is found in the message, otherwise `false`.
+   */
   static hasOperator(msg: string, operator: string) {
     return msg.includes(operator);
   }
 
+  /**
+   * Solves a comparison expression based on the given operator.
+   *
+   * @param part - The expression part to solve.
+   * @param operator - The comparison operator to use.
+   * @returns The result of the comparison.
+   */
   static solveComparison(part: string, operator: string): boolean {
     const parts = part.split(operator);
     let pass = true;
@@ -45,6 +66,12 @@ class ConditionChecker {
     return pass;
   }
 
+  /**
+   * Solves logical AND expressions within a part.
+   *
+   * @param part - The expression part containing logical AND.
+   * @returns The solved AND expression.
+   */
   static solveAnd(part: string): string {
     const conditions = part.split("&&");
     const finalConditions: string[] = [];
@@ -86,6 +113,12 @@ class ConditionChecker {
     return finalConditions.join("&&");
   }
 
+  /**
+   * Solves logical OR expressions within a part.
+   *
+   * @param part - The expression part containing logical OR.
+   * @returns The solved OR expression.
+   */
   static solveOr(part: string): string {
     const conditions = part.split("||");
     const finalConditions: string[] = [];
@@ -123,6 +156,12 @@ class ConditionChecker {
     return finalConditions.join("||");
   }
 
+  /**
+   * Solves a given message by evaluating logical AND and OR expressions.
+   *
+   * @param msg - The message containing the expressions to solve.
+   * @returns The solved expression.
+   */
   static solve(msg: string): string {
     const parts = msg.split("(");
     const finalConditions: string[] = [];
@@ -147,6 +186,12 @@ class ConditionChecker {
     return result;
   }
 
+  /**
+   * Evaluates a condition code by solving it and then using `eval`.
+   *
+   * @param code - The condition code to evaluate.
+   * @returns `true` if the condition is satisfied, otherwise `false`.
+   */
   static checkCondition(code: string): boolean {
     try {
       return eval(

@@ -1,10 +1,19 @@
 class WordMatcher {
   private words: string[];
 
+  /**
+   * Creates an instance of WordMatcher.
+   * @param words - The list of words to match against.
+   */
   constructor(words: string[]) {
     this.words = words;
   }
 
+  /**
+   * Searches for the best match for the input word from the list of words.
+   * @param inputWord - The word to search for.
+   * @returns The word with the highest similarity or null if no match is found.
+   */
   search(inputWord: string) {
     let bestMatch: { word: string; similarity: number } | null = null;
 
@@ -19,6 +28,12 @@ class WordMatcher {
     return bestMatch ? bestMatch.word : null;
   }
 
+  /**
+   * Calculates the similarity between two words.
+   * @param word1 - The first word.
+   * @param word2 - The second word.
+   * @returns The similarity score between 0 and 1.
+   */
   private calculateSimilarity(word1: string, word2: string) {
     const longerWord = word1.length > word2.length ? word1 : word2;
     const shorterWord = word1.length > word2.length ? word2 : word1;
@@ -34,6 +49,12 @@ class WordMatcher {
     );
   }
 
+  /**
+   * Calculates the edit distance (Levenshtein distance) between two words.
+   * @param word1 - The first word.
+   * @param word2 - The second word.
+   * @returns The edit distance between the two words.
+   */
   private calculateEditDistance(word1: string, word2: string) {
     word1 = word1.toLowerCase();
     word2 = word2.toLowerCase();
